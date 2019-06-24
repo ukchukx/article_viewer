@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :article_viewer,
-  ecto_repos: [ArticleViewer.Repo]
-
 # Configures the endpoint
 config :article_viewer, ArticleViewerWeb.Endpoint,
   url: [host: "localhost"],
@@ -20,7 +17,7 @@ config :article_viewer, ArticleViewerWeb.Endpoint,
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+  metadata: [:all]
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

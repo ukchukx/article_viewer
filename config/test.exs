@@ -9,10 +9,4 @@ config :article_viewer, ArticleViewerWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
-config :article_viewer, ArticleViewer.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "article_viewer_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+config :article_viewer, env: :test
