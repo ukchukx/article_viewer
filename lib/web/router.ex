@@ -1,5 +1,5 @@
-defmodule ArticleViewerWeb.Router do
-  use ArticleViewerWeb, :router
+defmodule ArticleViewer.Web.Router do
+  use ArticleViewer.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule ArticleViewerWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ArticleViewerWeb do
+  scope "/", ArticleViewer.Web do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ArticleViewerWeb do
+  # scope "/api", ArticleViewer.Web do
   #   pipe_through :api
   # end
 end

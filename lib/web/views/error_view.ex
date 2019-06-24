@@ -1,5 +1,5 @@
-defmodule ArticleViewerWeb.ErrorView do
-  use ArticleViewerWeb, :view
+defmodule ArticleViewer.Web.ErrorView do
+  use ArticleViewer.Web, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

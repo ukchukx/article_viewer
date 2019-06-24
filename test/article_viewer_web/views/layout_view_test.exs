@@ -1,3 +1,3 @@
-defmodule ArticleViewerWeb.LayoutViewTest do
-  use ArticleViewerWeb.ConnCase, async: true
+defmodule ArticleViewer.Web.LayoutViewTest do
+  use ArticleViewer.Web.ConnCase, async: true
 end

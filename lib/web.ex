@@ -1,12 +1,12 @@
-defmodule ArticleViewerWeb do
+defmodule ArticleViewer.Web do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use ArticleViewerWeb, :controller
-      use ArticleViewerWeb, :view
+      use ArticleViewer.Web, :controller
+      use ArticleViewer.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,19 +19,19 @@ defmodule ArticleViewerWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: ArticleViewerWeb
+      use Phoenix.Controller, namespace: ArticleViewer.Web
 
       import Plug.Conn
-      import ArticleViewerWeb.Gettext
-      alias ArticleViewerWeb.Router.Helpers, as: Routes
+      import ArticleViewer.Web.Gettext
+      alias ArticleViewer.Web.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/article_viewer_web/templates",
-        namespace: ArticleViewerWeb
+        root: "lib/web/templates",
+        namespace: ArticleViewer.Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
@@ -39,9 +39,9 @@ defmodule ArticleViewerWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import ArticleViewerWeb.ErrorHelpers
-      import ArticleViewerWeb.Gettext
-      alias ArticleViewerWeb.Router.Helpers, as: Routes
+      import ArticleViewer.Web.ErrorHelpers
+      import ArticleViewer.Web.Gettext
+      alias ArticleViewer.Web.Router.Helpers, as: Routes
     end
   end
 
@@ -56,7 +56,7 @@ defmodule ArticleViewerWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import ArticleViewerWeb.Gettext
+      import ArticleViewer.Web.Gettext
     end
   end
 

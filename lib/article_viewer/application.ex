@@ -9,7 +9,7 @@ defmodule ArticleViewer.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      ArticleViewerWeb.Endpoint
+      ArticleViewer.Web.Endpoint
       # Starts a worker by calling: ArticleViewer.Worker.start_link(arg)
       # {ArticleViewer.Worker, arg},
     ]
@@ -23,7 +23,7 @@ defmodule ArticleViewer.Application do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    ArticleViewerWeb.Endpoint.config_change(changed, removed)
+    ArticleViewer.Web.Endpoint.config_change(changed, removed)
     :ok
   end
 end

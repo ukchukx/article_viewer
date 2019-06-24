@@ -1,7 +1,7 @@
-defmodule ArticleViewerWeb.Endpoint do
+defmodule ArticleViewer.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :article_viewer
 
-  socket "/socket", ArticleViewerWeb.UserSocket,
+  socket "/socket", ArticleViewer.Web.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -42,5 +42,5 @@ defmodule ArticleViewerWeb.Endpoint do
     key: "_article_viewer_key",
     signing_salt: "HBEwgUkL"
 
-  plug ArticleViewerWeb.Router
+  plug ArticleViewer.Web.Router
 end

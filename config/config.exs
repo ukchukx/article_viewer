@@ -8,10 +8,10 @@
 use Mix.Config
 
 # Configures the endpoint
-config :article_viewer, ArticleViewerWeb.Endpoint,
+config :article_viewer, ArticleViewer.Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "QTPWfjW/h6QP7WUEmE/cHhin6mxXf+uQ/PngzwMJ7TQIva4V9pgKpTYbwT/h+pXV",
-  render_errors: [view: ArticleViewerWeb.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: ArticleViewer.Web.ErrorView, accepts: ~w(html json)],
   pubsub: [name: ArticleViewer.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

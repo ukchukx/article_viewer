@@ -1,5 +1,5 @@
-defmodule ArticleViewerWeb.PageControllerTest do
-  use ArticleViewerWeb.ConnCase
+defmodule ArticleViewer.Web.PageControllerTest do
+  use ArticleViewer.Web.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

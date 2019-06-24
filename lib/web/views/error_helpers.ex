@@ -1,4 +1,4 @@
-defmodule ArticleViewerWeb.ErrorHelpers do
+defmodule ArticleViewer.Web.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -36,9 +36,9 @@ defmodule ArticleViewerWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(ArticleViewerWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(ArticleViewer.Web.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(ArticleViewerWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(ArticleViewer.Web.Gettext, "errors", msg, opts)
     end
   end
 end
