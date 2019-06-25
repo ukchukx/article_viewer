@@ -10,11 +10,19 @@ defmodule ArticleViewer do
 
 
   @spec list_articles :: list(map)
+  @spec search_articles(String.t) :: list(map)
   @spec get_article(integer) :: map | nil
 
 
   def list_articles do
     case @client.list_articles() do
+      {:ok, articles} -> articles
+      {:error, _} -> []
+    end
+  end
+
+  def search_articles(terms) do
+    case @client.search_articles(terms) do
       {:ok, articles} -> articles
       {:error, _} -> []
     end

@@ -5,13 +5,14 @@ defmodule ArticleViewer.ElevioClient do
   @url Application.get_env(:article_viewer, :elevio)[:url]
 
   @spec list_articles :: {:ok, list(map)} | {:error, atom}
+  @spec search_articles(String.t) :: {:ok, list(map)} | {:error, atom}
   @spec get_article(integer) :: {:ok, map} | {:error, atom}
 
 
   def list_articles do
     try do
       HTTPotion.get("#{@url}articles", [
-        headers: ["x-api-key": @api_key, "Authorization": "Bearer " <> @token],
+        headers: headers(),
         timeout: 10_000
       ])
       |> case do
@@ -26,14 +27,36 @@ defmodule ArticleViewer.ElevioClient do
         _ -> {:error, :could_not_fetch}
       end
     rescue
-      _ -> {:error, :could_not_fetch}
+      _ -> {:error, :something_bad_happened}
+    end
+  end
+
+  def search_articles(terms) do
+    try do
+      HTTPotion.get("#{@url}search/en?query=#{terms}", [
+        headers: headers(),
+        timeout: 10_000
+      ])
+      |> case do
+        %HTTPotion.Response{body: body} ->
+          articles =
+            body
+            |> Jason.decode!
+            |> Map.get("results", [])
+
+          {:ok, articles}
+
+        _ -> {:error, :could_not_fetch}
+      end
+    rescue
+      _ -> {:error, :something_bad_happened}
     end
   end
 
   def get_article(id) do
     try do
       HTTPotion.get("#{@url}articles/#{id}", [
-        headers: ["x-api-key": @api_key, "Authorization": "Bearer " <> @token],
+        headers: headers(),
         timeout: 10_000
       ])
       |> case do
@@ -49,7 +72,16 @@ defmodule ArticleViewer.ElevioClient do
           _ -> {:error, :could_not_fetch}
       end
     rescue
-      _ -> {:error, :could_not_fetch}
+      _ -> {:error, :something_bad_happened}
     end
+  end
+
+  defp headers do
+    [
+      "Content-Type": "application/json",
+      "Accepts": "application/json",
+      "x-api-key": @api_key,
+      "Authorization": "Bearer " <> @token
+    ]
   end
 end

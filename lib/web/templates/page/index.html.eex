@@ -1,3 +1,3 @@
 <section id="app">
-  <articles :articles="<%= Jason.encode!(@articles) %>" />
+  <articles :articles="<%= Jason.encode!(@articles) %>" terms="<%= @terms %>" />
 </section>

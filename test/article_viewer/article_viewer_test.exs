@@ -12,4 +12,18 @@ defmodule ArticleViewer.ArticleViewerTest do
   test "get_article returns nil for non-existent articles" do
     refute ArticleViewer.get_article(100)
   end
+
+  test "search_articles returns a non-empty list when matches occur" do
+    results = ArticleViewer.search_articles("title")
+
+    assert is_list(results)
+    refute 0 == length(results)
+  end
+
+  test "search_articles returns an empty list if no matches occur" do
+    results = ArticleViewer.search_articles("dummy")
+
+    assert is_list(results)
+    assert 0 == length(results)
+  end
 end
