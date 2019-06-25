@@ -43,3 +43,5 @@ npm-debug.log
 .directory
 .env*
 .elixir_ls/
+logs/
+article_viewer.tar.gz

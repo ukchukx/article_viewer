@@ -1,20 +1,25 @@
 # ArticleViewer
 
-To start your Phoenix server:
+To install and run:
 
   * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+  * Install Node.js dependencies with `cd assets && npm i --no-audit`
+  * Create a file `.env` in the root directory containing the `ELEVIO_KEY` and `ELEVIO_TOKEN` environment variables. These variables should contain your API key and token respectively.
+  * Here's a sample:
+  ```bash
+  #!/bin/sh
+  export ELEVIO_KEY="xxxx"
+  export ELEVIO_TOKEN="xxxx"
+  ```
+  * Make the file executable with `chmod a+x .env`
+  * Load the environment variables and start the app with `source .env && mix phx.server`
+  * You can run tests with `source .env && mix test`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+To deploy a production build:
+  * Set up the `.env` file as described above
+  * Run `./build.sh` to build a docker image
+  * Run the image with `./run.sh`
+  * Visit [`localhost:4000`](http://localhost:4000) from your browser
 
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix

@@ -1,0 +1,10 @@
+version: '2'
+services:
+  tlc_app:
+    image: article_viewer
+    container_name: article_viewer
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - "${PWD}/logs:/app/logs"
+
