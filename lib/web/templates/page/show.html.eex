@@ -1,0 +1,7 @@
+<%= if @article == nil do %>
+<h1 class="text-muted mt-3 text-center">Not found</h1>
+<% else %>
+<section id="app">
+  <single-article :article="<%= Jason.encode!(@article) %>" />
+</section>
+<% end %>

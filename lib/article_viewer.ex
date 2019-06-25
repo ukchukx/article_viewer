@@ -8,9 +8,22 @@ defmodule ArticleViewer do
   """
   @client  Application.get_env(:article_viewer, :elevio)[:client]
 
+
+  @spec list_articles :: list(map)
+  @spec get_article(integer) :: map | nil
+
+
   def list_articles do
     case @client.list_articles() do
       {:ok, articles} -> articles
       {:error, _} -> []
     end
   end
+
+  def get_article(id) do
+    case @client.get_article(id) do
+      {:ok, article} -> article
+      {:error, _} -> nil
+    end
+  end
+end

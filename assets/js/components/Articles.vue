@@ -30,7 +30,9 @@
             <tbody>
               <tr :key="article.id" v-for="(article, i) in localArticles">
                 <td>{{ i + 1 }}</td>
-                <td>{{ article.title }}</td>
+                <td>
+                  <a :href="articleUrl(article)">{{ article.title }}</a>
+                </td>
                 <td>
                   <span v-if="isPublished(article)" class="badge badge-success">{{ article.status }}</span>
                   <span v-else class="badge badge-secondary">{{ article.status }}</span>
@@ -87,6 +89,9 @@ export default {
   methods: {
     isPublished({ status }) {
       return status === 'published';
+    },
+    articleUrl({ id }) {
+      return `/${id}`;
     },
     search() {
       //
