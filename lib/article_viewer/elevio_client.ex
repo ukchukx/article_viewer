@@ -3,6 +3,7 @@ defmodule ArticleViewer.ElevioClient do
   @api_key Application.get_env(:article_viewer, :elevio)[:key]
   @token Application.get_env(:article_viewer, :elevio)[:token]
   @url Application.get_env(:article_viewer, :elevio)[:url]
+  @timeout 20_000
 
   @spec list_articles :: {:ok, list(map)} | {:error, atom}
   @spec search_articles(String.t) :: {:ok, list(map)} | {:error, atom}
@@ -13,7 +14,7 @@ defmodule ArticleViewer.ElevioClient do
     try do
       HTTPotion.get("#{@url}articles", [
         headers: headers(),
-        timeout: 10_000
+        timeout: @timeout
       ])
       |> case do
         %HTTPotion.Response{body: body} ->
@@ -35,7 +36,7 @@ defmodule ArticleViewer.ElevioClient do
     try do
       HTTPotion.get("#{@url}search/en?query=#{terms}", [
         headers: headers(),
-        timeout: 10_000
+        timeout: @timeout
       ])
       |> case do
         %HTTPotion.Response{body: body} ->
@@ -57,7 +58,7 @@ defmodule ArticleViewer.ElevioClient do
     try do
       HTTPotion.get("#{@url}articles/#{id}", [
         headers: headers(),
-        timeout: 10_000
+        timeout: @timeout
       ])
       |> case do
         %HTTPotion.Response{body: body} ->
