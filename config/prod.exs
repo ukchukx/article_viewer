@@ -26,3 +26,6 @@ config :logger,
   ]
 
 config :article_viewer, env: :prod
+
+config :article_viewer, :elevio,
+  client: ArticleViewer.ElevioClient
